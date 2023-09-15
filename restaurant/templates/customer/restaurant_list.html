@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-12 col-sm-12 p-4">
+                <div class="pt-5">
+                  {% for restaurant in restaurants %}
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <img class="rounded" src="{{ restaurant.image.url }}" width="150" height="100"/>
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                <ul style="list-style-type: none;">
+                                  <li><a href="{% url 'food_item_list' restaurant.id %}">{{ restaurant.name }}</a></li>
+                                  <li>Description : {{ restaurant.description }}</li>
+                                  <li>Address     : {{ restaurant.address }}</li>
+                                  <li>Duration    : {{ restaurant.duration }}</li>
+                                  <li>Ratings     : {{ restaurant.rating }}</li>
+                                </ul>
+                                </div>
+                                <!-- <p class="font-weight-bold pl-5">{{ app.price }}</p> -->
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <hr />
+                {% endfor %}
+                </div>
+              </div>
+          </div>
+     </div>
+{% endblock content %}
